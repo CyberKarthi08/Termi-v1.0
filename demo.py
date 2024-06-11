@@ -18,8 +18,8 @@ t.start()
 while p.poll() is None:
     quary = str(input())
     if quary == 'quit':
-        print(quary)
-        p.communicate(quary,timeout=1)
+            print(quary)
+            p.communicate(quary,timeout=1)
 
     if p.poll() is not None:
         break
