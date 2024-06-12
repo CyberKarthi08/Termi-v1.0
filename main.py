@@ -1,17 +1,34 @@
+import os
 import threading
 from time import sleep
 
 
 def set_thread(name):
-    print("Function Thread Started & Going On....")
+    print("Function Started & Going On....", name)
+    print("Let's Wait 2 Sec & You Get a Terminal Access...")
     sleep(0.5)
-    print(f"The Function Thread End.....End {name}")
+    Terminal = input("$")
+    os.system(Terminal)
+
+    print("The Function Thread End By....\n", name)
+
+
 
 if __name__ == "__main__":
 
-    print("The Main Started......By", input("Who Are You : "))
-    set_thread("That Function")
-    demo = threading.Thread(target=set_thread, args=("HAcker",), daemon=True)
-    print("Let's Wait 5 Sec...Thread Will Be  Starting....", sleep(5))
-    demo.start()
-    print("Finally The Main Function Ended.....")
+    print(f"\nThe Main Started By....")
+    user = input("Who Are You : ")
+
+    set_thread("Normal Function")
+
+    var_thread = list()
+    print("Let's Wait 2 Sec...Thread Will Be Starting....\n")
+    sleep(2)
+    for index in range(1, 5):
+        print(f"{index} Thread Going On Let's Wait 2 Sec...")
+        demo = threading.Thread(target=set_thread(user), args=(1,), daemon=True)
+        demo.start()
+        var_thread.append(demo)
+        sleep(2)
+
+print("Finally The Main Ended.....")
