@@ -1,25 +1,45 @@
-from time import sleep
+import time
 import os
+import threading
+
+class main_threading1:
+    def join_users():
+        print(""" 
+
+_________ _______  _______  _______ _________                            
+\__   __/(  ____ \(  ____ )(       )\__   __/                            
+   ) (   | (    \/| (    )|| () () |   ) (                               
+   | |   | (__    | (____)|| || || |   | |                               
+   | |   |  __)   |     __)| |(_)| |   | |                               
+   | |   | (      | (\ (   | |   | |   | |                               
+   | |   | (____/\| ) \ \__| )   ( |___) (___                            
+   )_(   (_______/|/   \__/|/     \|\_______/                       __   
+                                          ( \        |\     /|     /  \  
+                                           \ \       | )   ( |     \/) ) 
+                                            \ \      | |   | | _____ | | 
+                                             ) )     ( (   ) )(_____)| | 
+                                             / /       \ \_/ /        | | 
+                                           / /         \   /       __) (_
+                                          (_/_____      \_/        \____/
+                                            (_____)                      
+
+            """)
+        users = list()
+        name_1 = input("Who are you : \n")
+        print(f"Hey, Hi {name_1} Welcome to visit our service!!!\n")
+        users.append(name_1)
+        print(users)
+
+    def termin_access(self,access):
+        print("If you access our 'Termin' Window \n")
+        okk = threading.Thread()
+        access1=input("Y or N : ")
+        if access1 == 'Y' | 'N':
+            print("Okay")
+            os.system(access1)
+        else:
+            print("Issus")
 
 
-class Main_Threading:
-    def __init__(self,user):
-        print(f"\nHey, Hi {user} Welcome! To visit our service",)
-
-    def user1(self,command):
-        print("let's open our terminal access ")
-        in_put = self
-        if in_put == "Y":
-            command = list()
-            os.system(command)
-
-
-
-calling = Main_Threading(input("who are you : "))
-
-calling1 = Main_Threading.user1(input("$ "))
-
-
-
-
-
+main_threading1.join_users()
+main_threading1.termin_access(access)
