@@ -11,7 +11,6 @@ while p.poll() is None:
 def read_Target(p):
     while p.poll() is None:
         print(p.stdout.readline())
-
 t=th.Thread(target=read_Target, args=(p,))
 t.start()
 
