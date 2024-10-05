@@ -1,5 +1,5 @@
 import os
-import Threading
+import threading
 from time import sleep
 import ipaddress
 import math
@@ -26,8 +26,8 @@ if __name__ == "__main__":
     var_thread = list()
     print("Let's Wait 2 Sec...Thread Will Be Starting....\n")
     sleep(2)
-    for index in range(1, 3):
-        print(f"{index} Thread Going On Let's Wait 2 Sec...")
+    while True:
+        print("Thread Going On Let's Wait 2 Sec...")
         demo = threading.Thread(target=set_thread(user), args=(1,))
         demo.start()
         # demo.join()
