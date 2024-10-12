@@ -2,7 +2,7 @@ import re
 import socket
 from time import sleep
 
-SERVER_IPADDR = '192.168.96.254'
+SERVER_IPADDR = '192.168.152.254'
 PORT = 5449
 
 __LIST__ = ["Configure your hostname", "Yes | No" ]

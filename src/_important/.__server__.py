@@ -8,7 +8,7 @@ import sys
 import ipaddress
 import math
 
-SERVER_IPADDR = "192.168.96.254"
+SERVER_IPADDR = "192.168.152.254"
 PORT = 5449
 MEMBER_DETAILS = []
 
