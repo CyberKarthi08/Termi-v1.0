@@ -35,27 +35,14 @@ class Server_Connection_Process(threading.Thread):
             print(f"[+] Listening on {SERVER_IPADDR}:{PORT}")
             while self.server_sock.listen:
                 self.client_send_data, self.client_connection_data = self.server_sock.accept()
-                print("[+]",self.client_send_data)
-                print("[-]",self.client_connection_data)
                 Server_Connection_Process.Initial_send_messages(self)
                 Server_Connection_Process.server_recv_meassage(self,recv_data=self.client_send_data)
-                # self.server_recv_data = self.client_send_data.recv(1024).decode('utf-8')
-                # MEMBER_DETAILS.append(self.server_recv_data)
                 print(f"[+] Connection Established By @_{MEMBER_DETAILS[0]} {self.client_connection_data[0]}:{self.client_connection_data[1]}")
-
                 Server_Connection_Process.server_send_data(self,send_message=f"@{MEMBER_DETAILS[0]}, Would you like to access our server infrastructure?")
                 Server_Connection_Process.server_recv_meassage(self,recv_data=self.client_send_data)
-                print(MEMBER_DETAILS)
                 if MEMBER_DETAILS[1] == "Yes":
                     while True:
                         Server_Connection_Process.server_access_permission(self)
-                        # if MEMBER_DETAILS[2] is True:
-                        #     recv_data = self.client_send_data.recv(1024).decode('utf-8')
-                        #     MEMBER_DETAILS.append(recv_data)
-                        #     print(MEMBER_DETAILS[3])
-                    # task_thread = threading.Thread(target=self.server_access_permission(),args=(self,))
-                    # task_thread.daemon = False # This ensures the thread will exit when the main program exits
-                    # task_thread.start() 
                 else:
                     request_acess_permission = f"{self.server_recv_data}, If your Connection lost".encode(encoding='UTF-8',errors='strict')
                     self.client_send_data.send(request_acess_permission)  
@@ -66,27 +53,15 @@ class Server_Connection_Process(threading.Thread):
             print(MEMBER_DETAILS[1])
             Server_Connection_Process.server_send_data(self,send_message=f"Termi_Server@{MEMBER_DETAILS[0]}:~$ ")
             self.server_recv_data = self.client_send_data.recv(1024).decode('utf-8')
-            # MEMBER_DETAILS.append(self.server_recv_data) 
-            # Server_Connection_Process.server_recv_meassage(self,recv_data=self.client_send_data)
-                    # MEMBER_DETAILS= self.server_recv_data
-            # print("[+]",MEMBER_DETAILS[2])
             try:
                 termi_command_result= subprocess.run(self.server_recv_data, shell=True, capture_output=True, text=True)
                 print(termi_command_result)
-                print(type(termi_command_result))
                 output = termi_command_result.stdout + termi_command_result.stderr  # Capture both stdout and stderr
             except Exception as e:
                 output = str(e)
 
                         # Send the command output back to the client
             self.client_send_data.send(output.encode('utf-8'))
-                    # promt_result = [os.system(MEMBER_DETAILS[2])]
-                    # print(type(promt_result))
-                    # print(promt_result)
-                    # promt_result = codecs.encode(promt_result[0], 'utf-8')
-                    # self.client_send_data.send(promt_result)
-                    # return promt_result
-    
             
 
     def Initial_send_messages(self):
@@ -102,14 +77,7 @@ class Server_Connection_Process(threading.Thread):
     def server_recv_meassage(self,recv_data):
         recv_data = self.client_send_data.recv(1024).decode('utf-8')
         MEMBER_DETAILS.append(recv_data)
-        
-         
-          
-
-         
-         
-        
-                    
+              
            
 
 if __name__ == "__main__":
